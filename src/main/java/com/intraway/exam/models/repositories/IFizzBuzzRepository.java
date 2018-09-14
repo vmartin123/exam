@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface IFizzBuzzRepository  {
 
-    public FizzBuzz persistTbenGetTheCode(FizzBuzz fizzBuzz);
+    FizzBuzz persistTbenGetTheCode(FizzBuzz fizzBuzz);
 }
