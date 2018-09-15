@@ -13,4 +13,6 @@ public class FizzBuzzMinIsGreaterThanMaxException extends RuntimeException {
     public FizzBuzzMinIsGreaterThanMaxException(Throwable cause) {
         super(cause);
     }
+
+
 }

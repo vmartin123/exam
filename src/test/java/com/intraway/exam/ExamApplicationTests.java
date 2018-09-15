@@ -1,6 +1,5 @@
 package com.intraway.exam;
 
-import com.intraway.exam.models.entity.FizzBuzz;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -14,12 +13,6 @@ public class ExamApplicationTests {
 	public void contextLoads() {
 	}
 
-	@Test
-	public void givenValidInput_testListCalculation() throws Exception {
 
-		FizzBuzz fizzBuzz = new FizzBuzz();
-
-
-	}
 
 }

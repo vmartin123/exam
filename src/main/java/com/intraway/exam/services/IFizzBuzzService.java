@@ -1,4 +1,4 @@
-package com.intraway.exam.models.services;
+package com.intraway.exam.services;
 
 
 import com.intraway.exam.models.entity.FizzBuzz;

@@ -1,15 +1,12 @@
-package com.intraway.exam.models.services;
+package com.intraway.exam.services;
 
 import com.intraway.exam.exceptions.FizzBuzzMinIsGreaterThanMaxException;
 import com.intraway.exam.models.entity.FizzBuzz;
-import com.intraway.exam.models.entity.FizzBuzzErrorResponse;
 import com.intraway.exam.models.repositories.IFizzBuzzRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.ExceptionHandler;
+
 
 import java.util.Arrays;
 
@@ -40,9 +37,9 @@ public class FizzBuzzServiceImpl implements IFizzBuzzService {
 
         StringBuilder result = new StringBuilder();
         for (int i = min; i <= max; i++) {
-            if (i % 3 == 0 && i % 5 == 0) result.append("FizzBuzz,");
-            else if (i % 3 == 0) result.append("Fizz,");
-            else if (i % 5 == 0) result.append("Buzz,");
+            if (i % 3 == 0 && i % 5 == 0) result.append("FizzBuzz");
+            else if (i % 3 == 0) result.append("Fizz");
+            else if (i % 5 == 0) result.append("Buzz");
             else result.append(Integer.toString(i));
 
             if (i != max) result.append(",");
@@ -59,7 +56,4 @@ public class FizzBuzzServiceImpl implements IFizzBuzzService {
         else if (Arrays.asList(dividedList).contains("Buzz"))   return "Se encontraron multiplos de 5";
         else return "No se encontraron multiplos de ningun tipo";
     }
-
-
-
 }
