@@ -1,4 +1,4 @@
-package com.intraway.exam.models.entity;
+package com.intraway.exam.exceptions;
 
 public class FizzBuzzErrorResponse  {
 
@@ -70,4 +70,6 @@ public class FizzBuzzErrorResponse  {
     public void setTimeStamp(long timeStamp) {
         this.timeStamp = timeStamp;
     }
+
+
 }

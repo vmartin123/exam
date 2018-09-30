@@ -5,9 +5,6 @@ import com.intraway.exam.models.entity.FizzBuzz;
 import com.intraway.exam.models.repositories.IFizzBuzzRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-
 import java.util.Arrays;
 
 @Service
@@ -16,24 +13,26 @@ public class FizzBuzzServiceImpl implements IFizzBuzzService {
     @Autowired
     private IFizzBuzzRepository fizzBuzzRepository;
 
-    @Override
-    @Transactional
-    public FizzBuzz persistTbenGetTheCode(FizzBuzz fizzBuzzModel) {return fizzBuzzRepository.persistTbenGetTheCode(fizzBuzzModel); }
+    public FizzBuzz calculateFizzBuzz(int min, int max)  {
+        if(ValidateThanMixParameterIsLesserThanMaxArgument(min, max));
 
-    public FizzBuzz getFizzBuzz(int min, int max) {
-
-        if ( min > max) {
-            throw new FizzBuzzMinIsGreaterThanMaxException("Los parámetros enviados son incorrectos");
-        }
         FizzBuzz fizzBuzz = new FizzBuzz();
         fizzBuzz.setTimestamp(System.currentTimeMillis());
-        fizzBuzz = persistTbenGetTheCode(fizzBuzz);
         fizzBuzz.setList(CalculateMultiples(min, max));
         fizzBuzz.setDescription(GetDescription(fizzBuzz.getList()));
+        fizzBuzz.setFirstNumberPassed(min);
+        fizzBuzz.setSecondNumberPassed(max);
+        fizzBuzzRepository.saveAndFlush(fizzBuzz);
+        fizzBuzz.setCode(fizzBuzz.getId());
         return fizzBuzz;
     }
 
-    public String CalculateMultiples(int min, int max) {
+    private boolean ValidateThanMixParameterIsLesserThanMaxArgument(int min, int max) {
+        if ( min > max) throw new FizzBuzzMinIsGreaterThanMaxException("Los parámetros enviados son incorrectos");
+        else return true;
+    }
+
+    private String CalculateMultiples(int min, int max) {
 
         StringBuilder result = new StringBuilder();
         for (int i = min; i <= max; i++) {
@@ -47,7 +46,7 @@ public class FizzBuzzServiceImpl implements IFizzBuzzService {
         return result.toString();
     }
 
-    public String GetDescription(String list) {
+    private String GetDescription(String list) {
 
         String[] dividedList = list.split(",");
 

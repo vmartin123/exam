@@ -4,7 +4,7 @@ import com.intraway.exam.models.entity.FizzBuzz;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 
-public interface IFizzBuzzRepository  {
 
-    FizzBuzz persistTbenGetTheCode(FizzBuzz fizzBuzz);
+public interface IFizzBuzzRepository extends JpaRepository<FizzBuzz, Long> {
+
 }

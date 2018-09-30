@@ -11,6 +11,13 @@ public class FizzBuzz {
 
     public  FizzBuzz () {}
 
+    public FizzBuzz(long timestamp, String code, String description, String list) {
+        this.timestamp = timestamp;
+        this.code = code;
+        this.description = description;
+        this.list = list;
+    }
+
     @JsonIgnore
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,6 +27,7 @@ public class FizzBuzz {
     @Column(name = "request_date")
     private long timestamp;
 
+    @Transient
     private String code;
 
     @JsonIgnore
@@ -35,7 +43,7 @@ public class FizzBuzz {
     @Column(name = "description")
     private String description;
 
-    @Column(name="query_result")
+    @Column(name="query_result", length = 12255)
     private String list;
 
     public long getId() {

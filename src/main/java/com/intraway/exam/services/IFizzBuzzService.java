@@ -2,17 +2,12 @@ package com.intraway.exam.services;
 
 
 import com.intraway.exam.models.entity.FizzBuzz;
+import com.intraway.exam.models.repositories.IFizzBuzzRepository;
+import org.springframework.http.ResponseEntity;
 
 
 public interface IFizzBuzzService {
 
-    FizzBuzz persistTbenGetTheCode(FizzBuzz fizzBuzzModel);
-
-    FizzBuzz getFizzBuzz(int min, int max);
-
-    String CalculateMultiples(int min, int max);
-
-    String GetDescription(String list);
-
+    FizzBuzz calculateFizzBuzz(int min, int max) throws Exception;
 
 }
