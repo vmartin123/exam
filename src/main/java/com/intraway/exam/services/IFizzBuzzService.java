@@ -10,4 +10,5 @@ public interface IFizzBuzzService {
 
     FizzBuzz calculateFizzBuzz(int min, int max) throws Exception;
 
+
 }

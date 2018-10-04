@@ -17,4 +17,5 @@ public class FizzBuzzRestController {
     public FizzBuzz calculateFizzBuzz(@PathVariable int min, @PathVariable int max) throws Exception {
         return fizzBuzzService.calculateFizzBuzz(min, max);
     }
+
 }
