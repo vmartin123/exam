@@ -3,7 +3,7 @@ services:
   spring-app:
     image: iw-exam-java-rest-api
     container_name: iw_exam_java_rest-api
-    restar: always
+    restart: always
     ports:
       - "8087:8087"
     build: .
