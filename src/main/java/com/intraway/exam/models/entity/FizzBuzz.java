@@ -1,56 +1,38 @@
 package com.intraway.exam.models.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.persistence.*;
-
-
-@Entity
-@Table(name = "fizzbuzz")
+@Document(collection = "fizzbuzzes")
 public class FizzBuzz {
 
     public  FizzBuzz () {}
 
-    public FizzBuzz(long timestamp, String code, String description, String list) {
-        this.timestamp = timestamp;
-        this.code = code;
-        this.description = description;
-        this.list = list;
-    }
-
     @JsonIgnore
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private long id;
+    private ObjectId id;
 
-    @Column(name = "request_date")
     private long timestamp;
 
-    @Transient
     private String code;
 
     @JsonIgnore
-    @Column(name = "first_number_passed")
     private int firstNumberPassed;
 
     @JsonIgnore
-    @Column(name = "second_number_passed")
     private int secondNumberPassed;
 
-
-
-    @Column(name = "description")
     private String description;
 
-    @Column(name="query_result", length = 12255)
     private String list;
 
-    public long getId() {
+    public ObjectId getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(ObjectId id) {
         this.id = id;
     }
 
@@ -58,8 +40,8 @@ public class FizzBuzz {
         return code;
     }
 
-    public void setCode(long id) {
-        this.code = "00" + Long.toString(id);
+    public void setCode(int id) {
+        this.code =  Integer.toString(id);
     }
 
     public int getFirstNumberPassed() {

@@ -1,5 +1,8 @@
-package com.intraway.exam.exceptions;
+package com.intraway.exam.exceptions.reponse_models;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class FizzBuzzErrorResponse  {
 
     private long timeStamp;

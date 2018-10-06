@@ -14,6 +14,7 @@ public class FizzBuzzServiceImpl implements IFizzBuzzService {
     private IFizzBuzzRepository fizzBuzzRepository;
 
     public FizzBuzz calculateFizzBuzz(int min, int max)  {
+
         if(ValidateThanMixParameterIsLesserThanMaxArgument(min, max));
 
         FizzBuzz fizzBuzz = new FizzBuzz();
@@ -22,17 +23,18 @@ public class FizzBuzzServiceImpl implements IFizzBuzzService {
         fizzBuzz.setDescription(GetDescription(fizzBuzz.getList()));
         fizzBuzz.setFirstNumberPassed(min);
         fizzBuzz.setSecondNumberPassed(max);
-        fizzBuzzRepository.saveAndFlush(fizzBuzz);
-        fizzBuzz.setCode(fizzBuzz.getId());
+        fizzBuzzRepository.save(fizzBuzz);
+        fizzBuzz.setCode(fizzBuzz.getId().getCounter());
         return fizzBuzz;
     }
 
-    private boolean ValidateThanMixParameterIsLesserThanMaxArgument(int min, int max) {
+    public boolean ValidateThanMixParameterIsLesserThanMaxArgument(int min, int max) {
+
         if ( min > max) throw new FizzBuzzMinIsGreaterThanMaxException("Los parámetros enviados son incorrectos");
-        else return true;
+        return true;
     }
 
-    private String CalculateMultiples(int min, int max) {
+    public String CalculateMultiples(int min, int max) {
 
         StringBuilder result = new StringBuilder();
         for (int i = min; i <= max; i++) {
@@ -46,13 +48,14 @@ public class FizzBuzzServiceImpl implements IFizzBuzzService {
         return result.toString();
     }
 
-    private String GetDescription(String list) {
+    public String GetDescription(String list) {
 
         String[] dividedList = list.split(",");
 
-        if (Arrays.asList(dividedList).contains("FizzBuzz")) return "Se encontraron multiplos de 3 y de 5";
+        if (Arrays.asList(dividedList).contains("Fizz") && Arrays.asList(dividedList).contains("Buzz")) return "Se encontraron multiplos de 3 y de 5";
+        else if (Arrays.asList(dividedList).contains("FizzBuzz"))   return "Se encontraron multiplos de 3 y 5";
         else if (Arrays.asList(dividedList).contains("Fizz")) return "Se encontraron multiplos de 3";
         else if (Arrays.asList(dividedList).contains("Buzz"))   return "Se encontraron multiplos de 5";
-        else return "No se encontraron multiplos de ningun tipo";
+        else return "No se encontraron multiplos de ningun numero";
     }
 }
