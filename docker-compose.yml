@@ -1,0 +1,20 @@
+version: '3'
+services:
+  spring-app:
+    image: iw-exam-java-rest-api
+    container_name: iw_exam_java_rest-api
+    restar: always
+    ports:
+      - "8087:8087"
+    build: .
+  mongodb:
+    image: mongo
+    container_name: iw_exam_mongo
+    restart: always
+    ports:
+    - "27017:27017"
+    environment:
+    - MONGO_INITDB_DATABASE=fizz_buzz_collection
+    volumes:
+    - /opt/iw-exam/data:/data/db
+
