@@ -1,8 +1,8 @@
 package com.intraway.exam.services;
 
-import com.intraway.exam.exceptions.FizzBuzzMinIsGreaterThanMaxException;
+import com.intraway.exam.exceptions.BadRequestException;
 import com.intraway.exam.models.entity.FizzBuzz;
-import com.intraway.exam.models.repositories.IFizzBuzzRepository;
+import com.intraway.exam.models.repository.IFizzBuzzRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.Arrays;
@@ -30,7 +30,7 @@ public class FizzBuzzServiceImpl implements IFizzBuzzService {
 
     public boolean ValidateThanMixParameterIsLesserThanMaxArgument(int min, int max) {
 
-        if ( min > max) throw new FizzBuzzMinIsGreaterThanMaxException("Los parámetros enviados son incorrectos");
+        if ( min > max) throw new BadRequestException("Los parámetros enviados son incorrectos");
         return true;
     }
 
@@ -56,6 +56,6 @@ public class FizzBuzzServiceImpl implements IFizzBuzzService {
         else if (Arrays.asList(dividedList).contains("FizzBuzz"))   return "Se encontraron multiplos de 3 y 5";
         else if (Arrays.asList(dividedList).contains("Fizz")) return "Se encontraron multiplos de 3";
         else if (Arrays.asList(dividedList).contains("Buzz"))   return "Se encontraron multiplos de 5";
-        else return "No se encontraron multiplos de ningun numero";
+        else return "No se encontraron múltiplos de ningun numero";
     }
 }

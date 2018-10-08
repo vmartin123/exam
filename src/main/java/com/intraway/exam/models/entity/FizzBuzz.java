@@ -14,15 +14,15 @@ public class FizzBuzz {
     @Id
     private ObjectId id;
 
-    private long timestamp;
+    private Long timestamp;
 
     private String code;
 
     @JsonIgnore
-    private int firstNumberPassed;
+    private Integer firstNumberPassed;
 
     @JsonIgnore
-    private int secondNumberPassed;
+    private Integer secondNumberPassed;
 
     private String description;
 
@@ -40,31 +40,31 @@ public class FizzBuzz {
         return code;
     }
 
-    public void setCode(int id) {
+    public void setCode(Integer id) {
         this.code =  Integer.toString(id);
     }
 
-    public int getFirstNumberPassed() {
+    public Integer getFirstNumberPassed() {
         return firstNumberPassed;
     }
 
-    public void setFirstNumberPassed(int firstNumberPassed) {
+    public void setFirstNumberPassed(Integer firstNumberPassed) {
         this.firstNumberPassed = firstNumberPassed;
     }
 
-    public int getSecondNumberPassed() {
+    public Integer getSecondNumberPassed() {
         return secondNumberPassed;
     }
 
-    public void setSecondNumberPassed(int secondNumberPassed) {
+    public void setSecondNumberPassed(Integer secondNumberPassed) {
         this.secondNumberPassed = secondNumberPassed;
     }
 
-    public long getTimestamp() {
+    public Long getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(long timestamp) {
+    public void setTimestamp(Long timestamp) {
         this.timestamp = timestamp;
     }
 

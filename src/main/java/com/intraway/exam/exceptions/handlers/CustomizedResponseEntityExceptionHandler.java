@@ -1,7 +1,7 @@
 package com.intraway.exam.exceptions.handlers;
 
 import com.intraway.exam.exceptions.reponse_models.FizzBuzzErrorResponse;
-import com.intraway.exam.exceptions.FizzBuzzMinIsGreaterThanMaxException;
+import com.intraway.exam.exceptions.BadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,8 +18,8 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
     FizzBuzzErrorResponse customizedErrorResponse;
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ExceptionHandler(FizzBuzzMinIsGreaterThanMaxException.class)
-    public  ResponseEntity<FizzBuzzErrorResponse> handleMinIsGreaterThanMaxException(FizzBuzzMinIsGreaterThanMaxException exception, WebRequest request) {
+    @ExceptionHandler(BadRequestException.class)
+    public  ResponseEntity<FizzBuzzErrorResponse> handleMinIsGreaterThanMaxException(BadRequestException exception, WebRequest request) {
         customizedErrorResponse = SetExceptionInformation(this.customizedErrorResponse, exception, request);
         customizedErrorResponse.setStatus(HttpStatus.BAD_REQUEST.value());
         customizedErrorResponse.setError(HttpStatus.BAD_REQUEST.getReasonPhrase());

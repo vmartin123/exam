@@ -38,7 +38,7 @@ public class FizzBuzzErrorResponse  {
     }
 
     public void setException(String exception) {
-        exception = exception.replace("class ","");
+        exception = exception.toLowerCase().replace("class ","");
         this.exception = exception;
     }
 
