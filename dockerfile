@@ -1,4 +1,8 @@
+FROM maven:3.5-alpine
+COPY ./ /app
+RUN cd /app && mvn package
+
 FROM openjdk:8
-ADD ./spring-rest-iw-exam.jar spring-rest-iw-exam.jar
+COPY spring-rest-iw-exam.jar /tmp/spring-rest-iw-exam.jar
 EXPOSE 8087
-ENTRYPOINT ["java", "-jar", "spring-rest-iw-exam.jar"]
+ENTRYPOINT ["java", "-jar", "/tmp/spring-rest-iw-exam.jar"]

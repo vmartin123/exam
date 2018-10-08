@@ -1,12 +1,5 @@
-version: '3'
+version: '2'
 services:
-  spring-app:
-    image: iw-exam-java-rest-api
-    container_name: iw_exam_java_rest-api
-    restart: always
-    ports:
-      - "8087:8087"
-    build: .
   mongodb:
     image: mongo
     container_name: iw_exam_mongo
@@ -17,4 +10,12 @@ services:
     - MONGO_INITDB_DATABASE=fizz_buzz_collection
     volumes:
     - /opt/iw-exam/data:/data/db
-
+  spring-app:
+    container_name: iw_exam_java_rest_api
+    build: ./
+    command: dockerize -wait tcp://mongodb:27017 -timeout 30s
+    restart: always
+    ports:
+    - "8087:8087"
+    depends_on:
+    - mongodb
