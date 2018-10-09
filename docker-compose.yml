@@ -13,7 +13,6 @@ services:
   spring-app:
     container_name: iw_exam_java_rest_api
     build: ./
-    command: dockerize -wait tcp://mongodb:27017 -timeout 30s
     restart: always
     ports:
     - "8087:8087"
